@@ -215,7 +215,8 @@ where
                         let _ = self.event_sender.try_send(Event::FileDeleted);
                     }
                     Err(msg) => {
-                        self.ui_mode = UiMode::ErrorMessage(format!("{}", msg));
+                        self.ui_mode =
+                            UiMode::ErrorMessage(format!("{} deleting {:?}", msg, full_path));
                         self.render();
                     }
                 };
